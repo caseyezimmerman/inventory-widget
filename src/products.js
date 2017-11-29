@@ -20,6 +20,12 @@ module.exports = {
 		},
 		{
 			category: 'Sporting Goods',	
+			price: '$6.99',
+			name: 'Soccer Ball',
+			inStock: false
+		},
+		{
+			category: 'Sporting Goods',	
 			price: '$29.99',
 			name: 'Basketball',
 			inStock: false

@@ -1,37 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
-import inventory from './products'
-import Table from './table'
-import SearchBar from './search'
+import products from './products'
+import ProductTable from './ProductTable'
+import SearchBar from './SearchBar'
 import Electronics from './electronics'
 
 
 class App extends Component {
-  constructor(props){
-    // App is a subclass of component, therefore we must include a super
-    super(props);
-    this.state = {
-      category: []
-    }
-  }
-
- 
-  handleSubmit(event){
-    var value=document.getElementById("searchTerm").value
-    event.preventDefault();
-    console.log("clicked")
-  }
-
   render() { 
     
     return (
-      <div className="App">
+      <div className="App container">
         <SearchBar />
-        <h3>Sporting Goods</h3>
-        <Table />
-        <h3>Electronics</h3>
-        <Electronics />
+        <ProductTable />
       </div>
     );
   }
