@@ -8,12 +8,28 @@ class ProductTable extends Component{
 	constructor(){
 		super();
 		this.products = products
+		this.safeProductData = {...products} /////this makes a new variable of product that stays safe when we mess wit the other variable to products
 		this.state = {
 			productsByCategory: {}
 		}
 	}
 
-	componentDidMount(){
+	componentWillMount(){
+		this.formatData();
+	}
+
+	componentWillReceiveProps(newProps){
+		// console.log(newProps)
+		const searchTerm = newProps.searchTerm.toLowerCase()
+
+		var tempProducts = [];
+		this.safeProductData.data.map((item)=>{
+			const itemName = item.name.toLowerCase();
+			if(itemName.indexOf(searchTerm) != -1){
+				tempProducts.push(item)
+			}
+		})
+		this.products.data = tempProducts
 		this.formatData();
 	}
 
@@ -33,6 +49,9 @@ class ProductTable extends Component{
 	}
 
 	render(){
+		console.log(this.props.searchTerm)
+
+
 		var rows = [];
 		// outter 'for' loop is going throuhg categories (sporting goods and electronics)
 		// it will run as many times as there are categories
